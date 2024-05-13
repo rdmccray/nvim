@@ -32,7 +32,7 @@ return {
                 },
                 expand_all = {
                     max_folder_discovery = 300,
-                    exclude = {},
+                    exclude = { ".git" },
                 },
             },
             filters = {
