@@ -1,7 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
-  dependencies = { 
+  dependencies = {
     -- "hrsh7th/cmp-nvim-lsp",
     -- "neovim/nvim-lspconfig",
     "hrsh7th/cmp-buffer",
@@ -69,36 +69,38 @@ return {
       -- }),
 
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      -- cmp.setup.cmdline({ '/', '?' }, {
-      --   mapping = cmp.mapping.preset.cmdline(),
-      --   sources = {
-      --     { name = 'buffer' }
-      --   }
-      -- }),
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      }),
 
       -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-      -- cmp.setup.cmdline(':', {
-      --   mapping = cmp.mapping.preset.cmdline(),
-      --   sources = cmp.config.sources({
-      --     { name = 'path' }
-      --   }, {
-      --     { name = 'cmdline' }
-      --   }),
-      --   matching = { disallow_symbol_nonprefix_matching = false }
-      -- }),
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          { name = 'cmdline' }
+        }),
+        matching = { disallow_symbol_nonprefix_matching = false }
+      }),
 
       -- Set up lspconfig.
       -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
       -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
       -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
-      --   capabilities = capabilities
+      --     capabilities = capabilities
+      -- }
+
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {
         format = lspkind.cmp_format({
           maxwidth = 50,
           ellipsis_char = "...",
         }),
-      },      -- }
+      },
     })
-  end, 
+  end
 }
