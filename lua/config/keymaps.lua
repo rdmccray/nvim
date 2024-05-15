@@ -13,6 +13,8 @@ keymap.set("n", "<leader>nh", ":noh<CR>", {desc = "Clear search highlights."})
 keymap.set("n", "<leader>o", "o<ESC>", {desc = "Insert line below without insert mode."})
 keymap.set("n", "<leader>O", "O<ESC>", {desc = "Insert line above without insert mode."})
 
+-- Buffer management
+keymap.set("n", "<leader>bc", ":bdelete<CR>") -- delete a buffer
 
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
