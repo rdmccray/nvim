@@ -44,10 +44,10 @@ keymap.set("n", "<leader>qn", ":cnext<CR>") -- jump to next quickfix list item
 keymap.set("n", "<leader>qp", ":cprev<CR>") -- jump to prev quickfix list item
 
 -- Vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
+-- keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
 
 -- Git-blame
-keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
+-- keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
 
 -- 
 -- keymap.set("n", "<leader>ha", require("harpoon.mark").add_file)
