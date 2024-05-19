@@ -32,12 +32,12 @@ return {
             },
             extensions = {
                 fzf = {
-                    fuzzy = true,                    -- false will only do exact matching
-                    override_generic_sorter = true,  -- override the generic sorter
-                    override_file_sorter = true,     -- override the file sorter
-                    case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                },                               -- the default case_mode is "smart_case"
-            }
+                    fuzzy = true, -- false will only do exact matching
+                    override_generic_sorter = true, -- override the generic sorter
+                    override_file_sorter = true, -- override the file sorter
+                    case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                }, -- the default case_mode is "smart_case"
+            },
         })
 
         telescope.load_extension("fzf")
@@ -49,6 +49,6 @@ return {
         keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
         keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find string in cwd" })
         keymap.set("n", "<leader>fs", builtin.grep_string, { desc = "Find string under cursor in cwd" })
-        keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Find string in current working directory"})
+        keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Find string in current working directory" })
     end,
 }

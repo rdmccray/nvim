@@ -16,7 +16,7 @@ return {
         cmp.setup({
             snippet = {
                 expand = function(args)
-                require('luasnip').lsp_expand(args.body)
+                    require("luasnip").lsp_expand(args.body)
                 end,
             },
             window = {
@@ -24,32 +24,32 @@ return {
                 documentation = cmp.config.window.bordered(),
             },
             mapping = cmp.mapping.preset.insert({
-                ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                ['<C-Space>'] = cmp.mapping.complete(),
-                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ["<C-Space>"] = cmp.mapping.complete(),
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' },
-                { name = 'buffer' },
-            })
+                { name = "nvim_lsp" },
+                { name = "luasnip" },
+                { name = "buffer" },
+            }),
         })
         -- `/` cmdline setup.
-        cmp.setup.cmdline('/', {
+        cmp.setup.cmdline("/", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
-                { name = 'buffer' }
-            }
+                { name = "buffer" },
+            },
         })
         -- `:` cmdline setup.
-        cmp.setup.cmdline(':', {
+        cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources({
-                { name = 'path' },
-                { name = 'cmdline' },
+                { name = "path" },
+                { name = "cmdline" },
             }),
-            matching = { disallow_symbol_nonprefix_matching = false }
+            matching = { disallow_symbol_nonprefix_matching = false },
         })
 
         -- Setup lspconfig.
@@ -57,5 +57,5 @@ return {
         -- require('lspconfig')[%YOUR_LSP_SERVER%].setup {
         -- capabilities = capabilities
         -- }
-    end
+    end,
 }

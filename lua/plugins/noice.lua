@@ -4,7 +4,7 @@ return {
         opts = {
             render = "default",
             stages = "slide",
-        }
+        },
     },
     {
         "folke/noice.nvim",
@@ -16,17 +16,17 @@ return {
             --   `nvim-notify` is only needed, if you want to use the notification view.
             --   If not available, we use `mini` as the fallback
             "rcarriga/nvim-notify",
-            "hrsh7th/nvim-cmp"
+            "hrsh7th/nvim-cmp",
         },
         config = function()
             require("noice").setup({
                 lsp = {
-                -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-                override = {
-                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                    ["vim.lsp.util.stylize_markdown"] = true,
-                    ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-                },
+                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+                    },
                 },
                 -- you can enable a preset for easier configuration
                 presets = {
@@ -37,6 +37,6 @@ return {
                     lsp_doc_border = false, -- add a border to hover docs and signature help
                 },
             })
-        end
-    }
+        end,
+    },
 }

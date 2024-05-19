@@ -29,7 +29,7 @@ opt.inccommand = "split"
 opt.iskeyword:append("-")
 opt.laststatus = 3
 opt.list = true
-opt.listchars:append("eol:󰌑")
+-- opt.listchars:append("eol:󰌑")
 opt.mouse = "a"
 opt.number = true
 opt.pumblend = 10
@@ -49,22 +49,9 @@ opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 4
 opt.termguicolors = true
-opt.timeoutlen = 300  -- lower than the default of 1000 to trigger which-key more quickly
+opt.timeoutlen = 300 -- lower than the default of 1000 to trigger which-key more quickly
 opt.undofile = true
 opt.undolevels = 10000
 opt.virtualedit = "block"
 opt.wildmode = "longest:full,full"
 opt.wrap = false
-
-
-
-
-
-
-
-
-
-
-
-
-
