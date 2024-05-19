@@ -13,9 +13,10 @@ return {
         })
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "html",
                 "cssls",
+                "html",
                 "lua_ls",
+                "tsserver",
             },
         })
         require("mason-lspconfig").setup_handlers({
