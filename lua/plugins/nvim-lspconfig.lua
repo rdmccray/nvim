@@ -7,10 +7,10 @@ local config = function()
 	local lspconfig = require("lspconfig")
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
-	for type, icon in pairs(diagnostic_signs) do
-		local hl = "DiagnosticSign" .. type
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-	end
+	--for type, icon in pairs(diagnostic_signs) do
+	--	local hl = "DiagnosticSign" .. type
+	--	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+	--end
 
 	-- lua
 	lspconfig.lua_ls.setup({
@@ -38,7 +38,8 @@ return {
 	"neovim/nvim-lspconfig",
 	lazy = false,
 	dependencies = {
-		"windwp/nvim-autopairs",
+		"folke/neoconf.nvim",
+        "windwp/nvim-autopairs",
 		"williamboman/mason.nvim",
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
