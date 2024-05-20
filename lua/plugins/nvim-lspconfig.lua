@@ -1,5 +1,5 @@
-local on_attach = require("util.lsp").on_attach
-local diagnostic_signs = require("util.icons").diagnostic_signs
+-- local on_attach = require("util.lsp").on_attach
+-- local diagnostic_signs = require("util.icons").diagnostic_signs
 
 local config = function()
 	require("neoconf").setup({})
@@ -40,7 +40,6 @@ return {
 	dependencies = {
 		"windwp/nvim-autopairs",
 		"williamboman/mason.nvim",
-		"creativenull/efmls-configs-nvim",
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",
