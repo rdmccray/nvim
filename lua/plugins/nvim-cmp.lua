@@ -49,24 +49,35 @@ return {
                                     -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
                     ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
                     show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+                    before = function (entry, vim_item)
+                        ...
+                    return vim_item
                 })
             }
         })
         -- `/` cmdline setup.
-        cmp.setup.cmdline("/", {
+    -- `/` cmdline setup.
+        cmp.setup.cmdline('/', {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
-                { name = "buffer" },
-            },
+              { name = 'buffer' }
+            }
         })
         -- `:` cmdline setup.
-        cmp.setup.cmdline(":", {
+    -- `:` cmdline setup.
+        cmp.setup.cmdline(':', {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources({
-                { name = "path" },
-                { name = "cmdline" },
-            }),
-            matching = { disallow_symbol_nonprefix_matching = false },
+                { name = 'path' }
+            }, {
+                    {
+                        name = 'cmdline',
+                        option = {
+                            ignore_cmds = { 'Man', '!' },
+                            treat_trailing_slash = true,
+                        }
+                    }
+            })
         })
     end,
 }
