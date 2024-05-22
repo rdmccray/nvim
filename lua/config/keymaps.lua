@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
 -- General keymaps
-keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jk." }) -- exit insert mode with jk
+keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk." }) -- exit insert mode with jk
 -- keymap.set("i", "ii", "<ESC>") -- exit insert mode with ii
 keymap.set("n", "<leader>wq", ":wq<CR>")                               -- save and quit
 keymap.set("n", "<leader>Q", ":qa!<CR>")                               -- quit all without saving
@@ -9,8 +9,9 @@ keymap.set("n", "<leader>qq", ":q!<CR>")                               -- quit w
 keymap.set("n", "<leader>wf", ":w<CR>")                                -- save
 keymap.set("n", "<leader>W", ":wqa<CR>")                               -- save and quit all
 keymap.set("n", "<leader>nh", ":noh<CR>", { desc = "Clear search highlights." })
-keymap.set("n", "<leader>o", "o<ESC>", { desc = "Insert line below without insert mode." })
-keymap.set("n", "<leader>O", "O<ESC>", { desc = "Insert line above without insert mode." })
+keymap.set("n", "<leader>o", ":put=''<CR>", { desc = "Insert line below without insert mode." })
+keymap.set("n", "<leader>O", ":put!=''<CR>", { desc = "Insert line above without insert mode." })
+
 
 -- Buffer management
 keymap.set("n", "<leader>bc", ":bdelete<CR>") -- delete a buffer
@@ -65,23 +66,22 @@ keymap.set("n", "<leader>qp", ":cprev<CR>") -- jump to prev quickfix list item
 -- keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>") -- Run REST query
 
 -- LSP
--- keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
--- keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>")
--- keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
--- keymap.set("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
--- keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
--- keymap.set("n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
--- keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
--- keymap.set("n", "<leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
--- keymap.set("n", "<leader>rr", "<cmd>lua vim.lsp.buf.rename()<CR>")
--- keymap.set("n", "<leader>gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
--- keymap.set("v", "<leader>gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
--- keymap.set("n", "<leader>ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
--- keymap.set("n", "<leader>gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
--- keymap.set("n", "<leader>gp", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
--- keymap.set("n", "<leader>gn", "<cmd>lua vim.diagnostic.goto_next()<CR>")
--- keymap.set("n", "<leader>tr", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
--- keymap.set("i", "<C-Space>", "<cmd>lua vim.lsp.buf.completion()<CR>")
+keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>")
+keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+keymap.set("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+keymap.set("n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+keymap.set("n", "<leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+keymap.set("n", "<leader>rr", "<cmd>lua vim.lsp.buf.rename()<CR>")
+keymap.set("n", "<leader>gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
+keymap.set("n", "<leader>ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+keymap.set("n", "<leader>gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
+keymap.set("n", "<leader>gp", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+keymap.set("n", "<leader>gn", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+keymap.set("n", "<leader>tr", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
+keymap.set("i", "<C-Space>", "<cmd>lua vim.lsp.buf.completion()<CR>")
 
 -- Nvim-dap
 -- keymap.set("n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
