@@ -70,6 +70,12 @@ return {
         -- typescript language server
         lspconfig.tsserver.setup({
             capabilities = capabilities,
+            init_options = {
+                hostInfo = "neovim",
+                preferences = {
+                    disableSuggestions = true,
+                },
+            },
         })
     end,
 }

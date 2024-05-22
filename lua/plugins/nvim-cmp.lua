@@ -9,18 +9,24 @@ return {
         "hrsh7th/cmp-cmdline",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
-        "onsails/lspkind.nvim"
+        "onsails/lspkind.nvim",
+        "rafamadriz/friendly-snippets",
     },
     config = function()
         local cmp = require("cmp")
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
-        -- Global setup.
+
+
+
+        -- global setup
         cmp.setup({
             snippet = {
                 expand = function(args)
                     require("luasnip").lsp_expand(args.body)
                 end,
+                -- use vscode-like snippets
+                require("luasnip.loaders.from_vscode").lazy_load()
             },
             window = {
                 completion = cmp.config.window.bordered(),
@@ -43,7 +49,7 @@ return {
             }),
             formatting = {
                 format = lspkind.cmp_format({
-                    mode = 'symbol', -- show only symbol annotations
+                    mode = 'symbol_text', -- show only symbol annotations
                     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                                     -- can also be a function to dynamically calculate max width such as 
                                     -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,

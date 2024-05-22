@@ -36,7 +36,10 @@ return {
                 },
                 expand_all = {
                     max_folder_discovery = 300,
-                    exclude = { ".git" },
+                    exclude = {
+                        ".git",
+                        "node_modules",                
+                    },
                 },
             },
             filters = {
