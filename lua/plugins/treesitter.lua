@@ -27,6 +27,7 @@ return {
                 "markdown",
                 "markdown_inline",
                 "query",
+                "regex",
                 "vim",
                 "vimdoc",
                 "yaml",
@@ -37,7 +38,7 @@ return {
 
             -- Automatically install missing parsers when entering buffer
             -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-            auto_install = true,
+            auto_install = false,
 
             incremental_selection = {
                 enable = true,
