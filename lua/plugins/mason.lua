@@ -2,11 +2,12 @@ return {
     "williamboman/mason.nvim",
     dependencies = {
         "williamboman/mason-lspconfig",
+        "neovim/nvim-lspconfig",
         "WhoIsSethDaniel/mason-tool-installer",
     },
     config = function()
-        -- variable for advanced  setup capabilities
-        -- local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        -- local on_attach = require("lspconfig").on_attach()
 
         require("mason").setup({
             ui = {
@@ -18,21 +19,49 @@ return {
             },
         })
 
+        require("neoconf").setup({})
+        require("neodev").setup({})
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
             },
-            automatic_installation = true,
-            -- placeholder for advanced setup functionality of mason plugins below
-            -- handlers = {
-            --     function(server_name)
-            --         require("lspconfig")[server_name].setup({
-            --             capabilities = lsp_capabilities,
-            --         })
-            --     end,
-            -- },
+            automatic_installation = false,
+            handlers = {
+                function(server_name)
+                    require("lspconfig")[server_name].setup({
+                        capabilities = capabilities,
+                    })
+                end,
+            },
+            ["lua_ls"] = function()
+                Settings = {
+                    Lua = {
+                        completion = {
+                            callSnippet = "Replace",
+                            enable = true,
+                        },
+                        diagnostics = {
+                            disable = {
+                                "missing-fields",
+                            },
+                            -- make the language server recognize "vim" global
+                            globals = { "vim" },
+                        },
+                        runtime = {
+                            version = "LuaJIT",
+                        },
+                        workspace = {
+                            checkThirdParty = false,
+                            ignoreDir = { ".git" },
+                            library = {
+                                vim.env.VIMRUNTIME,
+                            },
+                        },
+                    },
+                }
+            end,
         })
-
+        -- lua-language-server
         require("mason-tool-installer").setup({
 
             -- a list of all tools you want to ensure are installed upon

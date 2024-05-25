@@ -4,7 +4,8 @@ opt.autoindent = true
 opt.background = ""
 opt.backspace = "indent,eol,start"
 opt.clipboard:append("unnamedplus")
-opt.completeopt = "menu,menuone,noselect"
+-- opt.cmdheight = 0
+opt.completeopt = { "menu", "menuone", "noselect" }
 opt.confirm = true
 opt.cursorline = true
 opt.expandtab = true
@@ -27,7 +28,7 @@ opt.ignorecase = true
 opt.incsearch = true
 opt.inccommand = "split"
 opt.iskeyword:append("-")
-opt.laststatus = 3
+opt.laststatus = 0
 opt.list = true
 -- opt.listchars:append("eol:󰌑")
 opt.mouse = "a"
