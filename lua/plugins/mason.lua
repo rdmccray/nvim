@@ -30,6 +30,7 @@ return {
                 function(server_name)
                     require("lspconfig")[server_name].setup({
                         capabilities = capabilities,
+                        single_file_support = true,
                     })
                 end,
             },
@@ -37,7 +38,7 @@ return {
                 Settings = {
                     Lua = {
                         completion = {
-                            callSnippet = "Replace",
+                            callSnippet = "Both",
                             enable = true,
                         },
                         diagnostics = {

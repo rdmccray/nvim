@@ -31,7 +31,7 @@ opt.iskeyword:append("-")
 opt.laststatus = 0
 opt.list = true
 -- opt.listchars:append("eol:󰌑")
-opt.mouse = "a"
+opt.mouse = ""
 opt.number = true
 opt.pumblend = 10
 opt.pumheight = 10
