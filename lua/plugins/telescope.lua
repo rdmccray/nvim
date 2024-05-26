@@ -20,7 +20,7 @@ return {
                 mappings = {
                     i = {
                         ["<C-k>"] = actions.move_selection_previous, -- move to prev result
-                        ["<C-j>"] = actions.move_selection_next,     -- move to next result
+                        ["<C-j>"] = actions.move_selection_next, -- move to next result
                     },
                 },
             },
@@ -32,16 +32,16 @@ return {
             },
             extensions = {
                 ["ui-select"] = {
-                    require("telescope.themes").get_dropdown {
+                    require("telescope.themes").get_dropdown({
                         -- even more opts
-                    },
+                    }),
                 },
                 ["fzf"] = {
-                    fuzzy = true,                   -- false will only do exact matching
+                    fuzzy = true, -- false will only do exact matching
                     override_generic_sorter = true, -- override the generic sorter
-                    override_file_sorter = true,    -- override the file sorter
-                    case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-                },                                  -- the default case_mode is "smart_case"
+                    override_file_sorter = true, -- override the file sorter
+                    case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                }, -- the default case_mode is "smart_case"
             },
         })
 
