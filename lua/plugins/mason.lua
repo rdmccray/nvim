@@ -8,6 +8,16 @@ return {
     config = function()
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+        local on_attach = function()
+            local opts = { noremap = true, silent = true }
+            vim.keymap.set("n", "<leader>gh", "<cmd>vim.lsp.buf.hover()<CR>", opts)
+            vim.keymap.set("n", "<leader>gd", "<cmd>vim.lsp.buf.definition()<CR>", opts)
+            vim.keymap.set("n", "<leader>gt", "<cmd>vim.lsp.buf.type_definition()<CR>", opts)
+            vim.keymap.set("n", "<leader>gi", "<cmd>vim.lsp.buf.implementation()<CR>", opts)
+            vim.keymap.set("n", "<leader>dj", "<cmd>vim.diagnostic.goto_next()<CR>", opts)
+            vim.keymap.set("n", "<leader>dk", "<cmd>vim.diagnostic.goto_prev()<CR>", opts)
+            vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<CR>", opts)
+        end
         require("mason").setup({
             ui = {
                 icons = {
@@ -18,58 +28,50 @@ return {
             },
         })
 
-        require("neoconf").setup()
-        require("neodev").setup()
+        -- require("neoconf").setup()
+        -- require("neodev").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
             },
             automatic_installation = false,
             handlers = {
-                function(server_name)
-                    require("lspconfig")[server_name].setup({
-                        capabilities = capabilities,
-                        -- supposed to use "on_attach" to pass keymaps on
-                        -- LSPAttach but I do not understand how to do so
-                        on_attach = function(_, bufnr)
-                            vim.keymap.set("n", "<leader>gh", vim.lsp.buf.hover, { buffer = bufnr })
-                            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr })
-                            vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, { buffer = bufnr })
-                            vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { buffer = bufnr })
-                            vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = bufnr })
-                            vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = bufnr })
-                            vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<CR>", { buffer = bufnr })
-                        end,
-                    })
-                end,
+                -- ["lua_ls"] = function()
+                --     capabilities = capabilities,
+                --     on_attach = on_attach,
+                --     Settings = {
+                --         Lua = {
+                --             completion = {
+                --                 callSnippet = "Both",
+                --                 enable = true,
+                --             },
+                --             diagnostics = {
+                --                 disable = {
+                --                     -- "missing-fields",
+                --                 },
+                --                 -- make the language server recognize "vim" global
+                --                 globals = { "vim" },
+                --             },
+                --             runtime = {
+                --                 version = "LuaJIT",
+                --             },
+                --             workspace = {
+                --                 checkThirdParty = false,
+                --                 ignoreDir = { ".git" },
+                --                 library = {
+                --                     vim.env.VIMRUNTIME,
+                --                 },
+                --             },
+                --         },
+                --     }
+                -- end,
+                -- function(server_name)
+                --     require("lspconfig")[server_name].setup({
+                --         capabilities = capabilities,
+                --         on_attach = on_attach,
+                --     })
+                -- end,
             },
-            ["lua_ls"] = function()
-                Settings = {
-                    Lua = {
-                        completion = {
-                            callSnippet = "Both",
-                            enable = true,
-                        },
-                        diagnostics = {
-                            disable = {
-                                "missing-fields",
-                            },
-                            -- make the language server recognize "vim" global
-                            globals = { "vim" },
-                        },
-                        runtime = {
-                            version = "LuaJIT",
-                        },
-                        workspace = {
-                            checkThirdParty = false,
-                            ignoreDir = { ".git" },
-                            library = {
-                                vim.env.VIMRUNTIME,
-                            },
-                        },
-                    },
-                }
-            end,
         })
         -- lua-language-server
         require("mason-tool-installer").setup({
