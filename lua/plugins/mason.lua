@@ -2,7 +2,7 @@ return {
     "williamboman/mason.nvim",
     dependencies = {
         "williamboman/mason-lspconfig",
-        "williamboman/mason-tool-installer",
+        "whoissethdaniel/mason-tool-installer.nvim",
     },
     config = function()
         require("mason").setup({
