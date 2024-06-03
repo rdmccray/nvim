@@ -1,44 +1,43 @@
--- General vim.keymaps
-vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk." }) -- exit insert mode with
-vim.keymap.set("i", "ii", "<ESC>") -- exit insert mode with ii
-vim.keymap.set("n", "<leader>wq", ":wq<CR>") -- save and quit
-vim.keymap.set("n", "<leader>Q", ":qa!<CR>") -- quit all without saving
-vim.keymap.set("n", "<leader>qq", ":q!<CR>") -- quit without saving
-vim.keymap.set("n", "<leader>wf", ":w<CR>") -- save
-vim.keymap.set("n", "<leader>W", ":wqa<CR>") -- save and quit all
-vim.keymap.set("n", "<leader>nh", ":noh<CR>", { desc = "Clear search highlights." })
-vim.keymap.set("n", "<leader>o", ":put=''<CR>", { desc = "Insert line below without insert mode." })
-vim.keymap.set("n", "<leader>O", ":put!=''<CR>", { desc = "Insert line above without insert mode." })
+-- -- General vim.keymaps
+vim.keymap.set("i", "jj", "<ESC>", { noremap = false })
+vim.keymap.set("n", "<leader>wq", ":wq<CR>", { noremap = false }) -- save and quit
+vim.keymap.set("n", "<leader>Q", ":qa!<CR>", { noremap = false }) -- quit all without saving
+vim.keymap.set("n", "<leader>qq", ":q!<CR>", { noremap = false }) -- quit without saving
+vim.keymap.set("n", "<leader>wf", ":w<CR>", { noremap = false }) -- save
+vim.keymap.set("n", "<leader>W", ":wqa<CR>", { noremap = false }) -- save and quit all
+vim.keymap.set("n", "<leader>nh", ":noh<CR>", { noremap = false, desc = "Clear search highlights." })
+vim.keymap.set("n", "<leader>o", ":put=''<CR>", { noremap = false, desc = "Insert line below without insert mode." })
+vim.keymap.set("n", "<leader>O", ":put!=''<CR>", { noremap = false, desc = "Insert line above without insert mode." })
 
 -- Buffer management
-vim.keymap.set("n", "<leader>bc", ":bdelete<CR>") -- delete a buffer
+vim.keymap.set("n", "<leader>bc", ":bdelete<CR>", { noremap = false }) -- delete a buffer
 
 -- Split window management
-vim.keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-vim.keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
-vim.keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width
-vim.keymap.set("n", "<leader>sx", ":close<CR>") -- close split window
-vim.keymap.set("n", "<leader>sj", "<C-w>-") -- make split window height shorter
-vim.keymap.set("n", "<leader>sk", "<C-w>+") -- make split windows height taller
-vim.keymap.set("n", "<leader>sl", "<C-w>>5") -- make split windows width bigger
-vim.keymap.set("n", "<leader>sh", "<C-w><5") -- make split windows width smaller
+vim.keymap.set("n", "<leader>sv", "<C-w>v", {}) -- split window vertically
+vim.keymap.set("n", "<leader>sh", "<C-w>s", {}) -- split window horizontally
+vim.keymap.set("n", "<leader>se", "<C-w>=", {}) -- make split windows equal width
+vim.keymap.set("n", "<leader>sx", ":close<CR>", {}) -- close split window
+vim.keymap.set("n", "<leader>sj", "<C-w>-", {}) -- make split window height shorter
+vim.keymap.set("n", "<leader>sk", "<C-w>+", {}) -- make split windows height taller
+vim.keymap.set("n", "<leader>sl", "<C-w>>5", {}) -- make split windows width bigger
+vim.keymap.set("n", "<leader>sh", "<C-w><5", {}) -- make split windows width smaller
 
 -- Tab management
-vim.keymap.set("n", "<leader>to", ":tabnew<CR>") -- open a new tab
-vim.keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close a tab
-vim.keymap.set("n", "<leader>tn", ":tabn<CR>") -- next tab
-vim.keymap.set("n", "<leader>tp", ":tabp<CR>") -- previous tab
+vim.keymap.set("n", "<leader>to", ":tabnew<CR>", {}) -- open a new tab
+vim.keymap.set("n", "<leader>tx", ":tabclose<CR>", {}) -- close a tab
+vim.keymap.set("n", "<leader>tn", ":tabn<CR>", {}) -- next tab
+vim.keymap.set("n", "<leader>tp", ":tabp<CR>", {}) -- previous tab
 
 -- Diff vim.keymaps
-vim.keymap.set("n", "<leader>cc", ":diffput<CR>") -- put diff from current to other during diff
-vim.keymap.set("n", "<leader>cj", ":diffget 1<CR>") -- get diff from left (local) during merge
-vim.keymap.set("n", "<leader>ck", ":diffget 3<CR>") -- get diff from right (remote) during merge
-vim.keymap.set("n", "<leader>cn", "]c") -- next diff hunk
-vim.keymap.set("n", "<leader>cp", "[c") -- previous diff hunk
+-- vim.keymap.set("n", "<leader>cc", ":diffput<CR>") -- put diff from current to other during diff
+-- vim.keymap.set("n", "<leader>cj", ":diffget 1<CR>") -- get diff from left (local) during merge
+-- vim.keymap.set("n", "<leader>ck", ":diffget 3<CR>") -- get diff from right (remote) during merge
+-- vim.keymap.set("n", "<leader>cn", "]c") -- next diff hunk
+-- vim.keymap.set("n", "<leader>cp", "[c") -- previous diff hunk
 
 -- Quickfix vim.keymaps
-vim.keymap.set("n", "<leader>qn", ":cnext<CR>") -- jump to next quickfix list item
-vim.keymap.set("n", "<leader>qp", ":cprev<CR>") -- jump to prev quickfix list item
+-- vim.keymap.set("n", "<leader>qn", ":cnext<CR>") -- jump to next quickfix list item
+-- vim.keymap.set("n", "<leader>qp", ":cprev<CR>") -- jump to prev quickfix list item
 
 -- Vim-maximizer
 -- vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab

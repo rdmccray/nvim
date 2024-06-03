@@ -3,9 +3,9 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
         -- recommended settings from documentation
-        vim.g.loaded_netrw = 1
-        vim.g.loaded_netrwPlugin = 1
-
+        -- these are also set in config.globals
+	-- vim.g.loaded_netrw = 1
+        -- vim.g.loaded_netrwPlugin = 1
         require("nvim-tree").setup({
             view = {
                 width = 40,
@@ -38,7 +38,7 @@ return {
                     max_folder_discovery = 300,
                     exclude = {
                         ".git",
-                        "node_modules",                
+                        "node_modules",
                     },
                 },
             },
@@ -56,10 +56,10 @@ return {
         -- set keymaps
         local keymap = vim.keymap -- for conciseness
 
-        keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-        keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Focus on the file tree" }) -- place the focus to the file tree
-        keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-        keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+        keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+        keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>", { desc = "Focus on the file tree" }) -- place the focus to the file tree
+        keymap.set("n", "<leader>ec", ":NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
+        keymap.set("n", "<leader>er", ":NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 
         -- expand the file tree on open
         local api = require("nvim-tree.api")
