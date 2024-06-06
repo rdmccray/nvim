@@ -15,6 +15,7 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "onsails/lspkind.nvim",
         "rafamadriz/friendly-snippets",
+        "windwp/nvim-autopairs",
     },
     config = function()
         local cmp = require("cmp")
@@ -23,7 +24,11 @@ return {
         -- use vscode-like snippets
         require("luasnip.loaders.from_vscode").lazy_load()
 
-        -- global setup
+        -- allows nvim-autopairs and nvim-cmp to work together
+        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+        -- global setup of nvim-cmp
         cmp.setup({
             snippet = {
                 expand = function(args)
