@@ -1,5 +1,10 @@
 return {
     "neovim/nvim-lspconfig",
+    opts = {
+        inlay_hints = {
+            enabled = true,
+        },
+    },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         "williamboman/mason.nvim",
@@ -35,15 +40,45 @@ return {
         local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
         local lspconfig = require("lspconfig")
 
-        -- **************************************
-        -- * begin configuring language servers *
-        -- **************************************
+        -- ****************************************
+        -- ** begin configuring language servers **
+        -- ****************************************
 
         -- lua-language-server
+        -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
+        -- https://luals.github.io/wiki/settings/
+
         lspconfig.lua_ls.setup({
+
             capabilities = lsp_capabilities,
-            on_attach = on_attach,
-            single_file_support = true,
+            on_attach = on_attach, -- this needs to go into an autocmd
+
+            on_init = function(client)
+                local path = client.workspace_folders[1].name
+                if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+                    return
+                end
+                -- these get passed in the lua_ls settings along with the ones below
+                client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+                    runtime = {
+                        -- Tell the language server which version of Lua you're using
+                        -- (most likely LuaJIT in the case of Neovim)
+                        version = "LuaJIT",
+                    },
+                    -- Make the server aware of Neovim runtime files
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            -- Depending on the usage, you might want to add additional paths here.
+                            -- "${3rd}/luv/library"
+                            -- "${3rd}/busted/library",
+                        },
+                        -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+                        -- library = vim.api.nvim_get_runtime_file("", true)
+                    },
+                })
+            end,
             settings = { -- custom settings for lua
                 Lua = {
                     completion = {
@@ -59,46 +94,10 @@ return {
                     },
                     hint = {
                         enable = true,
-                        setType = false,
-                        paramType = true,
-                        paramName = "Disable",
                         semicolon = "Disable",
-                        arrayIndex = "Disable",
-                    },
-                    runtime = {
-                        version = "LuaJIT",
-                    },
-                    workspace = {
-                        checkThirdParty = false,
-                        ignoreDir = { ".git" },
-                        library = {
-                            vim.env.VIMRUNTIME,
-                            "${3rd}/luv/library",
-                        },
                     },
                 },
             },
         })
-
-        -- typescript language server
-        -- lspconfig.tsserver.setup({
-        --     capabilities = lsp_capabilities,
-        --     on_attach = on_attach,
-        --     init_options = {
-        --         hostInfo = "Neovim",
-        --         preferences = {
-        --             disableSuggestions = true,
-        --         },
-        --     },
-        -- })
-
-        -- -- json language server
-        -- lspconfig.jsonls.setup({
-        --     capabilities = lsp_capabilities,
-        --     on_attach = on_attach,
-        --     init_options = {
-        --         lsp_capabilities.textDocument.completion.completionItem.snippetSupport == true,
-        --     },
-        -- })
     end,
 }

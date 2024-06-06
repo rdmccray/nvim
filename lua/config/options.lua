@@ -1,7 +1,7 @@
 vim.opt.autoindent = true
 vim.opt.backspace = "indent,eol,start"
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menu,menuone,noselect"
 -- vim.opt.confirm = true
 vim.opt.cursorline = true
 -- vim.opt.encoding = "utf-8"
@@ -12,6 +12,7 @@ vim.opt.ignorecase = true
 vim.opt.incsearch = true
 -- vim.opt.inccommand = "split"
 -- vim.opt.list = true
+vim.opt.laststatus = 3
 vim.opt.mouse = ""
 vim.opt.number = true
 vim.opt.pumblend = 20

@@ -26,12 +26,12 @@ return {
                         ["Q"] = actions.close,
                     },
                 },
-                -- previewer = false,
+                preview = false,
             },
             pickers = {
                 find_files = {
                     mappings = {},
-                    previewer = false,
+                    --previewer = false,
                     hidden = true,
                     theme = "dropdown",
                 },
