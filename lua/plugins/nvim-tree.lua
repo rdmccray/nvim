@@ -4,7 +4,7 @@ return {
     config = function()
         -- recommended settings from documentation
         -- these are also set in config.globals
-	-- vim.g.loaded_netrw = 1
+        -- vim.g.loaded_netrw = 1
         -- vim.g.loaded_netrwPlugin = 1
         require("nvim-tree").setup({
             view = {

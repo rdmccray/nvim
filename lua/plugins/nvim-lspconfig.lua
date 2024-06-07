@@ -90,7 +90,7 @@ return {
                         disable = {
                             "missing-fields",
                         },
-                        globals = { "vim" },
+                        -- globals = { "vim" },
                     },
                     hint = {
                         enable = true,
