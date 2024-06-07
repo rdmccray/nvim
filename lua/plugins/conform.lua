@@ -1,8 +1,13 @@
 return {
     "stevearc/conform.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     opts = {
+        formatters = {
+            shfmt = {
+                prepend_args = { "i", "2" },
+            },
+        },
         formatters_by_ft = {
             javascript = { "prettier" },
             css = { "prettier" },
@@ -32,4 +37,8 @@ return {
             desc = "Format buffer",
         },
     },
+    -- init = function()
+    --     -- If you want the formatexpr, here is the place to set it
+    --     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    -- end,
 }
