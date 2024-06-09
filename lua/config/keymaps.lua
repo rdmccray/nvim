@@ -1,32 +1,48 @@
--- -- General vim.keymaps
-vim.keymap.set("i", "jj", "<ESC>", { noremap = false })
-vim.keymap.set("n", "<leader>wq", ":wq<CR>", { noremap = false }) -- save and quit
-vim.keymap.set("n", "<leader>Q", ":qa!<CR>", { noremap = false }) -- quit all without saving
-vim.keymap.set("n", "<leader>qq", ":q!<CR>", { noremap = false }) -- quit without saving
-vim.keymap.set("n", "<leader>wf", ":w<CR>", { noremap = false }) -- save
-vim.keymap.set("n", "<leader>W", ":wqa<CR>", { noremap = false }) -- save and quit all
-vim.keymap.set("n", "<leader>nh", ":noh<CR>", { noremap = false, desc = "Clear search highlights." })
-vim.keymap.set("n", "<leader>o", ":put=''<CR>", { noremap = false, desc = "Insert line below without insert mode." })
-vim.keymap.set("n", "<leader>O", ":put!=''<CR>", { noremap = false, desc = "Insert line above without insert mode." })
+-- **********************
+-- ** general mappings **
+-- **********************
+vim.keymap.set("i", "jj", "<ESC>", { noremap = false, desc = "Exit insert mode" })
+vim.keymap.set("n", "<leader>wq", ":wq<CR>", { noremap = false, desc = "Save and quit" })
+vim.keymap.set("n", "<leader>Q", ":qa!<CR>", { noremap = false, desc = "Quit all without saving" })
+vim.keymap.set("n", "<leader>qq", ":q!<CR>", { noremap = false, desc = "Quit without saving" })
+vim.keymap.set("n", "<leader>wf", ":w<CR>", { noremap = false, desc = "Save" })
+vim.keymap.set("n", "<leader>W", ":wqa<CR>", { noremap = false, desc = "Save and quit all" })
+vim.keymap.set("n", "<leader>nh", ":noh<CR>", { noremap = false, desc = "Clear search highlights" })
+vim.keymap.set("n", "<leader>o", ":put=''<CR>", { noremap = false, desc = "Insert line below without insert mode" })
+vim.keymap.set("n", "<leader>O", ":put!=''<CR>", { noremap = false, desc = "Insert line above without insert mode" })
 
--- Buffer management
-vim.keymap.set("n", "<leader>bc", ":bdelete<CR>", { noremap = false }) -- delete a buffer
+-- ***********************
+-- ** buffer management **
+-- ***********************
+vim.keymap.set("n", "<leader>bc", ":bdelete<CR>", { noremap = false })
 
--- Split window management
-vim.keymap.set("n", "<leader>sv", "<C-w>v", {}) -- split window vertically
-vim.keymap.set("n", "<leader>sh", "<C-w>s", {}) -- split window horizontally
-vim.keymap.set("n", "<leader>se", "<C-w>=", {}) -- make split windows equal width
-vim.keymap.set("n", "<leader>sx", ":close<CR>", {}) -- close split window
-vim.keymap.set("n", "<leader>sj", "<C-w>-", {}) -- make split window height shorter
-vim.keymap.set("n", "<leader>sk", "<C-w>+", {}) -- make split windows height taller
-vim.keymap.set("n", "<leader>sl", "<C-w>>5", {}) -- make split windows width bigger
-vim.keymap.set("n", "<leader>sh", "<C-w><5", {}) -- make split windows width smaller
+-- *****************************
+-- ** split window management **
+-- *****************************
+-- Creation
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+-- Closure
+vim.keymap.set("n", "<leader>sx", ":close<CR>", { desc = "Close focused window" })
+-- Sizing
+vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Equalize window width" })
+vim.keymap.set("n", "<leader>sj", "<C-w>-", { desc = "Decrease window height" })
+vim.keymap.set("n", "<leader>sk", "<C-w>+", { desc = "Increase window height" })
+vim.keymap.set("n", "<leader>sl", "<C-w>>5", { desc = "Increase window width" })
+vim.keymap.set("n", "<leader>sh", "<C-w><5", { desc = "Decrease window width" })
+-- Focus
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- Tab management
-vim.keymap.set("n", "<leader>to", ":tabnew<CR>", {}) -- open a new tab
-vim.keymap.set("n", "<leader>tx", ":tabclose<CR>", {}) -- close a tab
-vim.keymap.set("n", "<leader>tn", ":tabn<CR>", {}) -- next tab
-vim.keymap.set("n", "<leader>tp", ":tabp<CR>", {}) -- previous tab
+-- *********************
+-- ** tab  management **
+-- *********************
+vim.keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open a new tab" })
+vim.keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close focused tab" })
+vim.keymap.set("n", "<leader>tn", ":tabn<CR>", { desc = "Goto next tab" })
+vim.keymap.set("n", "<leader>tp", ":tabp<CR>", { desc = "Goto previous tab" })
 
 -- Diff vim.keymaps
 -- vim.keymap.set("n", "<leader>cc", ":diffput<CR>") -- put diff from current to other during diff

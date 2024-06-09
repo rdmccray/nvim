@@ -52,13 +52,11 @@ return {
         telescope.load_extension("ui-select")
 
         -- set keymaps
-        local keymap = vim.keymap -- for conciseness
-
-        keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in cwd" })
-        keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
-        keymap.set("n", "<leader>ft", builtin.buffers, { desc = "Find TODOs" })
-        keymap.set("n", "<leader>fs", builtin.grep_string, { desc = "Find string under cursor in cwd" })
-        keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Find string in cwd" })
-        keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Search the help" })
+        vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in cwd" })
+        vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
+        vim.keymap.set("n", "<leader>ft", builtin.buffers, { desc = "Find TODOs" })
+        vim.keymap.set("n", "<leader>fs", builtin.grep_string, { desc = "Find string under cursor in cwd" })
+        vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Find string in cwd" })
+        vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Search the help" })
     end,
 }
