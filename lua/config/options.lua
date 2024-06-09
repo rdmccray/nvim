@@ -1,7 +1,7 @@
 vim.opt.autoindent = true
 vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.clipboard = { "unnamed", "unnamedplus" }
-vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 -- vim.opt.confirm = true
 vim.opt.cursorline = true
 -- vim.opt.encoding = "utf-8"

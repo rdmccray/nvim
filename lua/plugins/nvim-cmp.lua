@@ -2,28 +2,35 @@ return {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
+        {
+            "rafamadriz/friendly-snippets",
+            config = function()
+                -- use vscode-like snippets
+                require("luasnip.loaders.from_vscode").lazy_load()
+            end,
+        },
+        {
+            "L3MON4D3/luasnip",
+            version = "v2.*",
+            build = "make install_jsregexp",
+            dependencies = {
+                "rafamadriz/friendly-snippets",
+            },
+            config = true,
+        },
+        "saadparwaiz1/cmp_luasnip",
+        "onsails/lspkind.nvim",
         "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-        {
-            "L3MON4D3/luasnip",
-            version = "v2.*",
-            build = "make install_jsregexp",
-        },
-        "saadparwaiz1/cmp_luasnip",
-        "onsails/lspkind.nvim",
-        "rafamadriz/friendly-snippets",
         "windwp/nvim-autopairs",
     },
     config = function()
         local cmp = require("cmp")
-        local luasnip = require("luasnip")
         local lspkind = require("lspkind")
-
-        -- use vscode-like snippets
-        require("luasnip.loaders.from_vscode").lazy_load()
+        local luasnip = require("luasnip")
 
         -- global setup of nvim-cmp
         cmp.setup({
@@ -53,12 +60,10 @@ return {
             }),
             formatting = {
                 format = lspkind.cmp_format({
-                    mode = "symbol_text", -- show only symbol annotations
-                    maxwidth = 60, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                    -- can also be a function to dynamically calculate max width such as
-                    -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
-                    ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-                    show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+                    mode = "symbol_text",
+                    maxwidth = 60,
+                    ellipsis_char = "...",
+                    show_labelDetails = true,
                 }),
             },
         })
