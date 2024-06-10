@@ -19,8 +19,8 @@ return {
         end
 
         -- keymaps to use in the buffer
-        local on_attach = function(_, bufnr)
-            vim.keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>", { buffer = bufnr })
+        local on_attach = function(args)
+            vim.keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>", { buffer = args.buf })
             -- vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { bufnr })
             -- vim.keymap.set("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { bufnr })
             -- vim.keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { bufnr })
