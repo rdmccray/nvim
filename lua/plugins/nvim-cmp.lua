@@ -66,10 +66,6 @@ return {
                     show_labelDetails = true,
                 }),
             },
-            -- completion = {
-            --     completeopt = "menuone,noinsert,noselect",
-            -- },
-            -- preselect = cmp.PreselectMode.None,
         })
         -- `/` cmdline setup.
         cmp.setup.cmdline("/", {
@@ -80,7 +76,10 @@ return {
         })
         -- `:` cmdline setup.
         cmp.setup.cmdline(":", {
-            mapping = cmp.mapping.preset.cmdline(),
+            mapping = cmp.mapping.preset.cmdline({
+                ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+                ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+            }),
             sources = cmp.config.sources({
                 { name = "path" },
             }, {
@@ -88,7 +87,6 @@ return {
             }),
             matching = { disallow_symbol_nonprefix_matching = false },
         })
-
         -- allows nvim-autopairs and nvim-cmp to work together
         local cmp_autopairs = require("nvim-autopairs.completion.cmp")
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

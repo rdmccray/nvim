@@ -25,6 +25,9 @@ return {
                         ["<C-j>"] = actions.move_selection_next, -- move to next result
                         ["Q"] = actions.close,
                     },
+                    n = {
+                        ["Q"] = actions.close,
+                    },
                 },
                 preview = false,
             },
